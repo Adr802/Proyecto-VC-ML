@@ -1,0 +1,427 @@
+<?xml version="1.0"?>
+<PMML version="4.4.1" xmlns="http://www.dmg.org/PMML-4_4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_4 http://www.dmg.org/pmml/v4-4/pmml-4-4.xsd">
+ <Header copyright="Copyright (c) 2024 Lenovo" description="Neural Network Model">
+  <Extension name="user" value="Lenovo" extender="SoftwareAG PMML Generator"/>
+  <Application name="SoftwareAG PMML Generator" version="2.5.2"/>
+  <Timestamp>2024-07-27 13:30:04.703509</Timestamp>
+ </Header>
+ <DataDictionary numberOfFields="31">
+  <DataField name="valido" optype="categorical" dataType="string">
+   <Value value="0"/>
+   <Value value="1"/>
+  </DataField>
+  <DataField name="x00" optype="continuous" dataType="double"/>
+  <DataField name="x01" optype="continuous" dataType="double"/>
+  <DataField name="x02" optype="continuous" dataType="double"/>
+  <DataField name="x03" optype="continuous" dataType="double"/>
+  <DataField name="x04" optype="continuous" dataType="double"/>
+  <DataField name="x10" optype="continuous" dataType="double"/>
+  <DataField name="x11" optype="continuous" dataType="double"/>
+  <DataField name="x12" optype="continuous" dataType="double"/>
+  <DataField name="x13" optype="continuous" dataType="double"/>
+  <DataField name="x14" optype="continuous" dataType="double"/>
+  <DataField name="x20" optype="continuous" dataType="double"/>
+  <DataField name="x21" optype="continuous" dataType="double"/>
+  <DataField name="x22" optype="continuous" dataType="double"/>
+  <DataField name="x23" optype="continuous" dataType="double"/>
+  <DataField name="x24" optype="continuous" dataType="double"/>
+  <DataField name="x30" optype="continuous" dataType="double"/>
+  <DataField name="x31" optype="continuous" dataType="double"/>
+  <DataField name="x32" optype="continuous" dataType="double"/>
+  <DataField name="x33" optype="continuous" dataType="double"/>
+  <DataField name="x34" optype="continuous" dataType="double"/>
+  <DataField name="x40" optype="continuous" dataType="double"/>
+  <DataField name="x41" optype="continuous" dataType="double"/>
+  <DataField name="x42" optype="continuous" dataType="double"/>
+  <DataField name="x43" optype="continuous" dataType="double"/>
+  <DataField name="x44" optype="continuous" dataType="double"/>
+  <DataField name="xactual" optype="continuous" dataType="double"/>
+  <DataField name="yactual" optype="continuous" dataType="double"/>
+  <DataField name="xmov" optype="continuous" dataType="double"/>
+  <DataField name="ymov" optype="continuous" dataType="double"/>
+  <DataField name="jugador" optype="continuous" dataType="double"/>
+ </DataDictionary>
+ <NeuralNetwork modelName="NeuralNet_model" functionName="classification" numberOfLayers="3" activationFunction="logistic">
+  <MiningSchema>
+   <MiningField name="valido" usageType="predicted" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x00" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x01" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x02" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x03" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x04" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x10" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x11" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x12" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x13" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x14" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x20" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x21" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x22" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x23" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x24" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x30" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x31" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x32" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x33" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x34" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x40" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x41" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x42" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x43" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="x44" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="xactual" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="yactual" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="xmov" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="ymov" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="jugador" usageType="active" invalidValueTreatment="returnInvalid"/>
+  </MiningSchema>
+  <Output>
+   <OutputField name="Predicted_valido" optype="categorical" dataType="string" feature="predictedValue"/>
+   <OutputField name="Probability_0" optype="continuous" dataType="double" feature="probability" value="0"/>
+   <OutputField name="Probability_1" optype="continuous" dataType="double" feature="probability" value="1"/>
+  </Output>
+  <NeuralInputs numberOfInputs="30">
+   <NeuralInput id="1">
+    <DerivedField name="derivedNI_x00" optype="continuous" dataType="double">
+     <FieldRef field="x00"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="2">
+    <DerivedField name="derivedNI_x01" optype="continuous" dataType="double">
+     <FieldRef field="x01"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="3">
+    <DerivedField name="derivedNI_x02" optype="continuous" dataType="double">
+     <FieldRef field="x02"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="4">
+    <DerivedField name="derivedNI_x03" optype="continuous" dataType="double">
+     <FieldRef field="x03"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="5">
+    <DerivedField name="derivedNI_x04" optype="continuous" dataType="double">
+     <FieldRef field="x04"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="6">
+    <DerivedField name="derivedNI_x10" optype="continuous" dataType="double">
+     <FieldRef field="x10"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="7">
+    <DerivedField name="derivedNI_x11" optype="continuous" dataType="double">
+     <FieldRef field="x11"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="8">
+    <DerivedField name="derivedNI_x12" optype="continuous" dataType="double">
+     <FieldRef field="x12"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="9">
+    <DerivedField name="derivedNI_x13" optype="continuous" dataType="double">
+     <FieldRef field="x13"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="10">
+    <DerivedField name="derivedNI_x14" optype="continuous" dataType="double">
+     <FieldRef field="x14"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="11">
+    <DerivedField name="derivedNI_x20" optype="continuous" dataType="double">
+     <FieldRef field="x20"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="12">
+    <DerivedField name="derivedNI_x21" optype="continuous" dataType="double">
+     <FieldRef field="x21"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="13">
+    <DerivedField name="derivedNI_x22" optype="continuous" dataType="double">
+     <FieldRef field="x22"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="14">
+    <DerivedField name="derivedNI_x23" optype="continuous" dataType="double">
+     <FieldRef field="x23"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="15">
+    <DerivedField name="derivedNI_x24" optype="continuous" dataType="double">
+     <FieldRef field="x24"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="16">
+    <DerivedField name="derivedNI_x30" optype="continuous" dataType="double">
+     <FieldRef field="x30"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="17">
+    <DerivedField name="derivedNI_x31" optype="continuous" dataType="double">
+     <FieldRef field="x31"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="18">
+    <DerivedField name="derivedNI_x32" optype="continuous" dataType="double">
+     <FieldRef field="x32"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="19">
+    <DerivedField name="derivedNI_x33" optype="continuous" dataType="double">
+     <FieldRef field="x33"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="20">
+    <DerivedField name="derivedNI_x34" optype="continuous" dataType="double">
+     <FieldRef field="x34"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="21">
+    <DerivedField name="derivedNI_x40" optype="continuous" dataType="double">
+     <FieldRef field="x40"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="22">
+    <DerivedField name="derivedNI_x41" optype="continuous" dataType="double">
+     <FieldRef field="x41"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="23">
+    <DerivedField name="derivedNI_x42" optype="continuous" dataType="double">
+     <FieldRef field="x42"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="24">
+    <DerivedField name="derivedNI_x43" optype="continuous" dataType="double">
+     <FieldRef field="x43"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="25">
+    <DerivedField name="derivedNI_x44" optype="continuous" dataType="double">
+     <FieldRef field="x44"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="26">
+    <DerivedField name="derivedNI_xactual" optype="continuous" dataType="double">
+     <FieldRef field="xactual"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="27">
+    <DerivedField name="derivedNI_yactual" optype="continuous" dataType="double">
+     <FieldRef field="yactual"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="28">
+    <DerivedField name="derivedNI_xmov" optype="continuous" dataType="double">
+     <FieldRef field="xmov"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="29">
+    <DerivedField name="derivedNI_ymov" optype="continuous" dataType="double">
+     <FieldRef field="ymov"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="30">
+    <DerivedField name="derivedNI_jugador" optype="continuous" dataType="double">
+     <FieldRef field="jugador"/>
+    </DerivedField>
+   </NeuralInput>
+  </NeuralInputs>
+  <NeuralLayer numberOfNeurons="5">
+   <Neuron id="31" bias="-0.868633273593908">
+    <Con from="1" weight="9.76255793284248"/>
+    <Con from="2" weight="7.77598594909847"/>
+    <Con from="3" weight="-2.85833999369727"/>
+    <Con from="4" weight="3.58890441584585"/>
+    <Con from="5" weight="-23.3398050975056"/>
+    <Con from="6" weight="14.7266925272719"/>
+    <Con from="7" weight="33.2917226764893"/>
+    <Con from="8" weight="4.31764830069815"/>
+    <Con from="9" weight="-9.31098970535312"/>
+    <Con from="10" weight="-2.67736842819694"/>
+    <Con from="11" weight="-9.22122853457799"/>
+    <Con from="12" weight="17.2962547869119"/>
+    <Con from="13" weight="1.35226340076616"/>
+    <Con from="14" weight="-9.18301855530501"/>
+    <Con from="15" weight="11.1265499751995"/>
+    <Con from="16" weight="0.49153641427525"/>
+    <Con from="17" weight="15.2015621181827"/>
+    <Con from="18" weight="7.12734924140645"/>
+    <Con from="19" weight="-10.6796583114902"/>
+    <Con from="20" weight="-7.6545832380156"/>
+    <Con from="21" weight="-12.2059756505527"/>
+    <Con from="22" weight="6.6650899344096"/>
+    <Con from="23" weight="-21.9456429490408"/>
+    <Con from="24" weight="34.5516518268159"/>
+    <Con from="25" weight="-13.2819103922503"/>
+    <Con from="26" weight="-3.51015034122711"/>
+    <Con from="27" weight="-3.53566629265132"/>
+    <Con from="28" weight="-6.78693746109601"/>
+    <Con from="29" weight="1.87278866825119"/>
+    <Con from="30" weight="4.16325874247037"/>
+   </Neuron>
+   <Neuron id="32" bias="-14.4812290068278">
+    <Con from="1" weight="3.99354459007804"/>
+    <Con from="2" weight="-14.9538529192922"/>
+    <Con from="3" weight="8.24274255394263"/>
+    <Con from="4" weight="-7.96703480472483"/>
+    <Con from="5" weight="6.66722127470191"/>
+    <Con from="6" weight="-18.0296710386932"/>
+    <Con from="7" weight="-10.2047181268413"/>
+    <Con from="8" weight="-30.5376169291757"/>
+    <Con from="9" weight="-6.72860555348044"/>
+    <Con from="10" weight="13.6876365489812"/>
+    <Con from="11" weight="20.5187341671557"/>
+    <Con from="12" weight="4.39422879723674"/>
+    <Con from="13" weight="-0.287790891455937"/>
+    <Con from="14" weight="20.3259584322845"/>
+    <Con from="15" weight="1.5485090305257"/>
+    <Con from="16" weight="-1.77444607482124"/>
+    <Con from="17" weight="-2.731258940959"/>
+    <Con from="18" weight="-22.8004241294075"/>
+    <Con from="19" weight="-33.8804097392191"/>
+    <Con from="20" weight="40.1449457819872"/>
+    <Con from="21" weight="25.5576727588426"/>
+    <Con from="22" weight="31.1011939055022"/>
+    <Con from="23" weight="-32.7508764806109"/>
+    <Con from="24" weight="2.87545482218261"/>
+    <Con from="25" weight="-24.5434567249609"/>
+    <Con from="26" weight="5.36459837631152"/>
+    <Con from="27" weight="-14.5707655340231"/>
+    <Con from="28" weight="46.0219573339359"/>
+    <Con from="29" weight="4.76388595919042"/>
+    <Con from="30" weight="-31.0708711060248"/>
+   </Neuron>
+   <Neuron id="33" bias="3.89946150284939">
+    <Con from="1" weight="-5.02622975542688"/>
+    <Con from="2" weight="2.29764267528542"/>
+    <Con from="3" weight="-5.72624594360557"/>
+    <Con from="4" weight="-7.98862702216698"/>
+    <Con from="5" weight="21.991359101246"/>
+    <Con from="6" weight="-18.5678361166927"/>
+    <Con from="7" weight="10.2454874160459"/>
+    <Con from="8" weight="0.719706549316082"/>
+    <Con from="9" weight="-15.0387990073008"/>
+    <Con from="10" weight="-6.4709380340469"/>
+    <Con from="11" weight="-10.3299775604292"/>
+    <Con from="12" weight="-15.008501732606"/>
+    <Con from="13" weight="14.6514622215376"/>
+    <Con from="14" weight="-6.4819547037695"/>
+    <Con from="15" weight="-4.32907323937159"/>
+    <Con from="16" weight="-11.3855856002849"/>
+    <Con from="17" weight="-3.04248489586906"/>
+    <Con from="18" weight="-25.215350975267"/>
+    <Con from="19" weight="13.9585374740194"/>
+    <Con from="20" weight="14.2348476225801"/>
+    <Con from="21" weight="-15.9991823789489"/>
+    <Con from="22" weight="-13.6964516290119"/>
+    <Con from="23" weight="-3.76807752167168"/>
+    <Con from="24" weight="0.974339054145562"/>
+    <Con from="25" weight="-9.18333525398904"/>
+    <Con from="26" weight="37.824137200532"/>
+    <Con from="27" weight="40.0109079008336"/>
+    <Con from="28" weight="14.1343389814261"/>
+    <Con from="29" weight="-2.36217119717318"/>
+    <Con from="30" weight="-2.49732650848003"/>
+   </Neuron>
+   <Neuron id="34" bias="-9.5540139287577">
+    <Con from="1" weight="9.1301709938044"/>
+    <Con from="2" weight="-9.75034327556142"/>
+    <Con from="3" weight="-16.4661587328616"/>
+    <Con from="4" weight="0.3903293308205"/>
+    <Con from="5" weight="-3.40217441308481"/>
+    <Con from="6" weight="-4.33848318779295"/>
+    <Con from="7" weight="-3.60652846192181"/>
+    <Con from="8" weight="-7.07518747329767"/>
+    <Con from="9" weight="-24.768577001902"/>
+    <Con from="10" weight="-1.62702284548044"/>
+    <Con from="11" weight="-3.05844815418331"/>
+    <Con from="12" weight="-22.161027360864"/>
+    <Con from="13" weight="-7.69455288770728"/>
+    <Con from="14" weight="13.1663416748311"/>
+    <Con from="15" weight="-3.48393601738424"/>
+    <Con from="16" weight="-1.92609256640351"/>
+    <Con from="17" weight="0.233581451896627"/>
+    <Con from="18" weight="10.9776974265505"/>
+    <Con from="19" weight="-5.52965331552874"/>
+    <Con from="20" weight="-12.6503503624162"/>
+    <Con from="21" weight="7.99406062799439"/>
+    <Con from="22" weight="-13.2069126888259"/>
+    <Con from="23" weight="-5.77501209722543"/>
+    <Con from="24" weight="-11.5129551547489"/>
+    <Con from="25" weight="-16.355871451761"/>
+    <Con from="26" weight="-1.22067299116998"/>
+    <Con from="27" weight="7.04453937097578"/>
+    <Con from="28" weight="3.86677559177989"/>
+    <Con from="29" weight="17.3320127041135"/>
+    <Con from="30" weight="19.6348948803495"/>
+   </Neuron>
+   <Neuron id="35" bias="-47.6970736644063">
+    <Con from="1" weight="31.3313584465477"/>
+    <Con from="2" weight="22.081912620789"/>
+    <Con from="3" weight="0.53350926613982"/>
+    <Con from="4" weight="7.91240672631116"/>
+    <Con from="5" weight="-30.5544161639508"/>
+    <Con from="6" weight="-24.2877530095091"/>
+    <Con from="7" weight="41.7149042481887"/>
+    <Con from="8" weight="16.889734959403"/>
+    <Con from="9" weight="-15.7738773773509"/>
+    <Con from="10" weight="3.17100483513118"/>
+    <Con from="11" weight="-19.6717146361161"/>
+    <Con from="12" weight="-9.1337965901294"/>
+    <Con from="13" weight="-11.1796885003714"/>
+    <Con from="14" weight="-18.3548360660333"/>
+    <Con from="15" weight="15.318570230604"/>
+    <Con from="16" weight="20.4937938679108"/>
+    <Con from="17" weight="4.65499458421929"/>
+    <Con from="18" weight="-15.2573575989266"/>
+    <Con from="19" weight="2.22712131197827"/>
+    <Con from="20" weight="6.99960637962476"/>
+    <Con from="21" weight="-20.7748964182724"/>
+    <Con from="22" weight="4.40708227951872"/>
+    <Con from="23" weight="-14.0096536178871"/>
+    <Con from="24" weight="-0.932530150504487"/>
+    <Con from="25" weight="-9.54135688534281"/>
+    <Con from="26" weight="6.75350206937181"/>
+    <Con from="27" weight="10.2025333078297"/>
+    <Con from="28" weight="-13.8625817094801"/>
+    <Con from="29" weight="7.79784189350384"/>
+    <Con from="30" weight="-13.7660953424347"/>
+   </Neuron>
+  </NeuralLayer>
+  <NeuralLayer numberOfNeurons="1">
+   <Neuron id="36" bias="27.0035515825134">
+    <Con from="31" weight="-30.0830905947037"/>
+    <Con from="32" weight="-5.04317790014841"/>
+    <Con from="33" weight="6.58780858927377"/>
+    <Con from="34" weight="4.17315698311788"/>
+    <Con from="35" weight="-37.9077648480182"/>
+   </Neuron>
+  </NeuralLayer>
+  <NeuralLayer numberOfNeurons="2" activationFunction="threshold" threshold="0.5">
+   <Neuron id="37" bias="1.0">
+    <Con from="36" weight="-1.0"/>
+   </Neuron>
+   <Neuron id="38" bias="0.0">
+    <Con from="36" weight="1.0"/>
+   </Neuron>
+  </NeuralLayer>
+  <NeuralOutputs numberOfOutputs="2">
+   <NeuralOutput outputNeuron="37">
+    <DerivedField name="derivedNO_valido" optype="continuous" dataType="double">
+     <NormDiscrete field="valido" value="0"/>
+    </DerivedField>
+   </NeuralOutput>
+   <NeuralOutput outputNeuron="38">
+    <DerivedField name="derivedNO_valido" optype="continuous" dataType="double">
+     <NormDiscrete field="valido" value="1"/>
+    </DerivedField>
+   </NeuralOutput>
+  </NeuralOutputs>
+ </NeuralNetwork>
+</PMML>

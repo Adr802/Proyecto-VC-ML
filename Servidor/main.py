@@ -12,7 +12,7 @@ ann_model = None
 
 @app.route("/")
 def root():
-    return loadModels()
+    return 'Hola mundo'
 
 @app.route("/predict", methods=['POST'])
 def predictMove():

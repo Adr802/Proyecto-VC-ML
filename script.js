@@ -75,17 +75,15 @@ function markCell(cell) {
 function loadTable() {
     const cells = document.querySelectorAll('.cell');
 
-    // Limpiar celdas marcadas
     cells.forEach(cell => {
         cell.classList.remove('marked');
     });
 
-    // Limpiar el array de celdas marcadas
     markedCells = [];
 
     let xCount = 0;
     let oCount = 0;
-    const maxCount = Math.floor(cells.length / 3); // Máximo 8 de cada uno en un tablero de 25 celdas (un tercio de las celdas)
+    const maxCount = Math.floor(cells.length / 3); 
     const cellValues = [];
 
     // Generar un array de valores aleatorios de 'X', 'O' y ''
@@ -133,21 +131,26 @@ function validateMove() {
     // Inicializar el array de movimientos
     const moves = [];
 
-    if (markedCells.length > 1) {
-        const [currentId, moveId] = markedCells;
-        const [currentX, currentY] = currentId.split('-').map(Number);
-        const [moveX, moveY] = moveId.split('-').map(Number);
-
-        // Llenar el array de movimientos con las posiciones y el jugador
-        moves.push(currentX, currentY, moveX, moveY, currentPlayer);
+    if (markedCells.length < 2) {
+        Swal.fire({
+            title: "Error",
+            text: "Debe seleccionar dos fichas para validar la jugada.",
+            icon: "error"
+        });
+        return; 
     }
+
+    const [currentId, moveId] = markedCells;
+    const [currentX, currentY] = currentId.split('-').map(Number);
+    const [moveX, moveY] = moveId.split('-').map(Number);
+
+    // Llenar el array de movimientos con las posiciones y el jugador
+    moves.push(currentX, currentY, moveX, moveY, currentPlayer);
 
     // Añadir los movimientos al estado del tablero
     moves.forEach((value) => {
         boardState.push(value);
     });
-
-    //console.log(boardState); // Array con valores numéricos del estado del tablero
 
     const options = {
         method: 'POST', 
@@ -157,30 +160,28 @@ function validateMove() {
         body: JSON.stringify(boardState)
     };
 
-    // Hacer la solicitud fetch
     fetch('http://127.0.0.1:5000/predict', options)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json(); // Convertir la respuesta a JSON
+            return response.json(); 
         })
         .then(responseData => {
-            result = ''
-            if(responseData == 0){
+            if (responseData == 0) {
                 Swal.fire({
-                    title: "Jugada Invalida",
+                    title: "Jugada Inválida",
                     icon: "error"
-                  });
-            }else{
+                });
+            } else {
                 Swal.fire({
-                    title: "Jugada Valida",
+                    title: "Jugada Válida",
                     icon: "success"
-                  });
+                });
             }
         })
         .catch(error => {
-            console.error('Error:', error); // Manejar errores
+            console.error('Error:', error); 
         });
 }
 
@@ -193,7 +194,6 @@ function cleanMarked() {
         cell.classList.remove('marked');
     });
 
-    // Limpiar el array de celdas marcadas
     markedCells = [];
 
 }

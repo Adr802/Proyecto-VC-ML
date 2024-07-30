@@ -19,6 +19,8 @@ def predictMove():
     loadModels()
     move = request.get_json()
     
+    print(move)
+    print(type(move))
 
     try:
 

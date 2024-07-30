@@ -162,7 +162,7 @@ function validateMove() {
         body: JSON.stringify(boardState)
     };
 
-    fetch('https://senior-rosalinde-ups-sjaa-6a972bed.koyeb.app/predict', options)
+    fetch('http://127.0.0.1:5000/predict', options)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

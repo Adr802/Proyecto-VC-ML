@@ -44,22 +44,22 @@ def loadModels():
     global rf_model, svm_model, ann_model  
     msg = []
     try:
-        rf_model = Model.load('models/rf_model.pmml')
+        rf_model = Model.load('/models/rf_model.pmml')
         msg.append("Model Random Forest loaded successfully!")
     except Exception as e:
-        return f"Error loading Random Forest model: {e}"
+        msg.append("Error loading Random Forest model: {e}")
     
     try:
-        svm_model = Model.load('models/svm_model.pmml')
+        svm_model = Model.load('/models/svm_model.pmml')
         msg.append("Model SVM loaded successfully!")
     except Exception as e:
-        return f"Error loading SVM model: {e}"
+        msg.append("Error loading SVM model: {e}")
     
     try:
-        ann_model = Model.load('models/ann_model.pmml')
+        ann_model = Model.load('/models/ann_model.pmml')
         msg.append("Model ANN loaded successfully!")
     except Exception as e:
-        return f"Error loading ANN model: {e}"
+        msg.append("Error loading ANN model: {e}")
     
     return "\n".join(msg)
 

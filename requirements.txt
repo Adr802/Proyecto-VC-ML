@@ -1,4 +1,3 @@
-flask
+Flask
 pypmml
 flask_cors
-collections

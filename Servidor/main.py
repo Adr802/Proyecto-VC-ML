@@ -18,16 +18,10 @@ def root():
 def predictMove():
     loadModels()
     move = request.get_json()
-    # Obtener la cadena de números separados por comas
-    cadena = move['data']
     
 
     try:
-        # Dividir la cadena en subcadenas usando la coma y el espacio como delimitadores
-        subcadenas = cadena.split(", ")
-        # Convertir cada subcadena a un entero
-        move = [int(valor) for valor in subcadenas]
-        
+
         
         rf_predictions = rf_model.predict(move)
         rf_predictions_list = list(rf_predictions)  

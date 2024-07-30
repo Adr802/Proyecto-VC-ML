@@ -152,7 +152,7 @@ function validateMove() {
         boardState.push(value);
     });
 
-    console.log(boardState)
+    console.log(JSON.stringify(boardState))
 
     const options = {
         method: 'POST', 

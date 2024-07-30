@@ -12,7 +12,7 @@ ann_model = None
 
 @app.route("/")
 def root():
-    return 'Hola mundo'
+    return loadModels()
 
 @app.route("/predict", methods=['POST'])
 def predictMove():
@@ -20,7 +20,7 @@ def predictMove():
     move = request.get_json()
     
     print(move)
-    print(type(move))
+    print(type(move[0]))
 
     try:
 

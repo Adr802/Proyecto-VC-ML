@@ -47,19 +47,19 @@ def loadModels():
         rf_model = Model.load('/models/rf_model.pmml')
         msg.append("Model Random Forest loaded successfully!")
     except Exception as e:
-        msg.append("Error loading Random Forest model: {e}")
+        msg.append("Error loading Random Forest model")
     
     try:
         svm_model = Model.load('/models/svm_model.pmml')
         msg.append("Model SVM loaded successfully!")
     except Exception as e:
-        msg.append("Error loading SVM model: {e}")
+        msg.append("Error loading SVM model")
     
     try:
         ann_model = Model.load('/models/ann_model.pmml')
         msg.append("Model ANN loaded successfully!")
     except Exception as e:
-        msg.append("Error loading ANN model: {e}")
+        msg.append("Error loading ANN model")
     
     return "\n".join(msg)
 

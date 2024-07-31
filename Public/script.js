@@ -1,8 +1,27 @@
-let markedCells = []; // Array para almacenar los IDs de las celdas marcadas
-let currentPlayer = null; // Variable para almacenar el jugador actual
+
+
+
+
+var markedCells = []; // Array para almacenar los IDs de las celdas marcadas
+var currentPlayer = null; // Variable para almacenar el jugador actual
+var csvData = null;
 
 addEventListener("DOMContentLoaded", (event) => {
-    createTable();
+    fetch('http://localhost:3000/getCSV')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            csvData = data;
+            console.log("Datos del CSV:", csvData['data']);
+            createTable();
+        })
+        .catch(error => {
+            console.error('Error al cargar el CSV:', error);
+        });
 });
 
 function createTable() {
@@ -20,9 +39,7 @@ function createTable() {
             board.appendChild(cell);
         }
     }
-
-    // Llenar el tablero con X, O y espacios en blanco de manera aleatoria
-    loadTable();
+    loadTable()
 }
 
 function markCell(cell) {
@@ -73,6 +90,11 @@ function markCell(cell) {
 }
 
 function loadTable() {
+    imgRandom = Math.floor(Math.random() * csvData['data'].length)
+    jugada = csvData['data'][imgRandom]
+    const tablero = Object.values(jugada).filter(value => typeof value === 'number');
+    //console.log(tablero)
+
     const cells = document.querySelectorAll('.cell');
 
     cells.forEach(cell => {
@@ -81,45 +103,11 @@ function loadTable() {
 
     markedCells = [];
 
-    let xCount = 0;
-    let oCount = 0;
-    const maxCount = Math.floor(cells.length / 3); 
-    const cellValues = [];
-
-    // Generar un array de valores aleatorios de 'X', 'O' y ''
-    for (let i = 0; i < cells.length; i++) {
-        if (xCount < maxCount && oCount < maxCount) {
-            const rand = Math.random();
-            if (rand < 0.33) {
-                cellValues.push('X');
-                xCount++;
-            } else if (rand < 0.66) {
-                cellValues.push('O');
-                oCount++;
-            } else {
-                cellValues.push('');
-            }
-        } else if (xCount < maxCount) {
-            cellValues.push('X');
-            xCount++;
-        } else if (oCount < maxCount) {
-            cellValues.push('O');
-            oCount++;
-        } else {
-            cellValues.push('');
-        }
-    }
-
-    // Mezclar el array de valores aleatoriamente
-    for (let i = cellValues.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [cellValues[i], cellValues[j]] = [cellValues[j], cellValues[i]];
-    }
-
-    // Asignar los valores mezclados a las celdas
+    // Asignar valores a cada celda
     cells.forEach((cell, index) => {
-        cell.textContent = cellValues[index];
-        cell.dataset.value = cellValues[index] === 'X' ? '2' : cellValues[index] === 'O' ? '1' : '0';
+        const value = tablero[index];
+        cell.textContent = value === 2 ? 'X' : value === 1 ? 'O' : ''; 
+        cell.dataset.value = value; 
     });
 }
 
@@ -137,7 +125,7 @@ function validateMove() {
             text: "Debe seleccionar dos fichas para validar la jugada.",
             icon: "error"
         });
-        return; 
+        return;
     }
 
     const [currentId, moveId] = markedCells;
@@ -155,7 +143,7 @@ function validateMove() {
     console.log(JSON.stringify(boardState))
 
     const options = {
-        method: 'POST', 
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -167,7 +155,7 @@ function validateMove() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json(); 
+            return response.json();
         })
         .then(responseData => {
             if (responseData == 0) {
@@ -183,7 +171,7 @@ function validateMove() {
             }
         })
         .catch(error => {
-            console.error('Error:', error); 
+            console.error('Error:', error);
         });
 }
 
